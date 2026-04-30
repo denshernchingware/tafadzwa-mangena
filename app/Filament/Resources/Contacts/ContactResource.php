@@ -21,7 +21,7 @@ class ContactResource extends Resource
 {
     protected static ?string $model = Contact::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = null;
 
     protected static UnitEnum|string|null $navigationGroup = 'Contact';
     protected static ?string $navigationLabel = 'Contact';
