@@ -13,9 +13,7 @@ class ProjectItemForm
     {
         return $schema
             ->components([
-                TextInput::make('project_detail_id')
-                    ->required()
-                    ->numeric(),
+              
                 FileUpload::make('image')
                     ->image()
                     ->required(),

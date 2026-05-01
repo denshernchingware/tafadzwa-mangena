@@ -16,9 +16,7 @@ class ProjectItemsTable
     {
         return $table
             ->columns([
-                TextColumn::make('project_detail_id')
-                    ->numeric()
-                    ->sortable(),
+                
                 ImageColumn::make('image'),
                 TextColumn::make('name')
                     ->searchable(),
