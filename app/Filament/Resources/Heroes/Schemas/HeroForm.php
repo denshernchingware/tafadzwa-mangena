@@ -18,12 +18,14 @@ class HeroForm
                     ->columnSpanFull(),
                 FileUpload::make('main_image')
                     ->image()
+                    ->directory('heroes')
+                    ->disk('public')
                     ->required(),
                 FileUpload::make('additional_image')
-                    ->image(),
+                    ->image()
+                    ->directory('heroes')
+                    ->disk('public'),
                 TextInput::make('role')
-                    ->required(),
-                TextInput::make('cv_file')
                     ->required(),
             ]);
     }

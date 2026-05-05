@@ -14,11 +14,13 @@ class HeroInfolist
             ->components([
                 TextEntry::make('description')
                     ->columnSpanFull(),
-                ImageEntry::make('main_image'),
+                ImageEntry::make('main_image')
+                    ->disk('public'),
                 ImageEntry::make('additional_image')
+                    ->disk('public')
                     ->placeholder('-'),
                 TextEntry::make('role'),
-                TextEntry::make('cv_file'),
+               // TextEntry::make('cv_file'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

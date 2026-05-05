@@ -13,9 +13,10 @@ class ProjectItemForm
     {
         return $schema
             ->components([
-              
+
                 FileUpload::make('image')
                     ->image()
+                ->disk('public')
                     ->required(),
                 TextInput::make('name')
                     ->required(),

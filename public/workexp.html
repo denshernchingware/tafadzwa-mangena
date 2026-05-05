@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Work Experience</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    body {
+      background: #f0f4f8;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* ── Section label ────────────────────────────────────────────── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #2563eb;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(26px, 4vw, 38px);
+      color: #0f172a;
+      line-height: 1.15;
+      margin-bottom: 40px;
+    }
+    .section-title span {
+      color: #2563eb;
+    }
+
+    /* ── Table shell ──────────────────────────────────────────────── */
+    .exp-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    /* ── Header row ───────────────────────────────────────────────── */
+    .exp-table thead th {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      padding: 0 20px 14px;
+      border-bottom: 1px solid #e2e8f0;
+      white-space: nowrap;
+    }
+    .exp-table thead th:first-child { padding-left: 0; }
+
+    /* ── Body rows ────────────────────────────────────────────────── */
+    .exp-row {
+      border-bottom: 1px solid #e2e8f0;
+      transition: background .2s;
+    }
+    .exp-row:last-child { border-bottom: none; }
+    .exp-row:hover { background: #fff; }
+
+    .exp-row td {
+      padding: 28px 20px;
+      vertical-align: top;
+    }
+    .exp-row td:first-child { padding-left: 0; }
+    .exp-row td:last-child  { padding-right: 0; }
+
+    /* ── Column: Company ──────────────────────────────────────────── */
+    .col-company {
+      width: 220px;
+      min-width: 180px;
+    }
+    .company-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      font-weight: 800;
+      font-family: 'Syne', sans-serif;
+      color: #fff;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+    .company-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #0f172a;
+      margin-bottom: 3px;
+    }
+    .company-role {
+      font-size: 12.5px;
+      color: #64748b;
+      font-weight: 400;
+    }
+
+    /* ── Column: Duration ─────────────────────────────────────────── */
+    .col-duration {
+      width: 160px;
+      min-width: 130px;
+    }
+    .duration-range {
+      font-size: 13px;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 5px;
+    }
+    .duration-length {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #2563eb;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 99px;
+      padding: 3px 9px;
+    }
+    .duration-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #2563eb;
+      flex-shrink: 0;
+    }
+
+    /* ── Column: Duties ───────────────────────────────────────────── */
+    .col-duties { }
+    .duty-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .duty-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.55;
+      font-weight: 300;
+    }
+    .duty-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #2563eb;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    /* ── Column: Type badge ───────────────────────────────────────── */
+    .col-type {
+      width: 120px;
+      min-width: 100px;
+      text-align: right;
+    }
+    .type-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 11px;
+      border-radius: 99px;
+      letter-spacing: .03em;
+    }
+    .badge-fulltime  { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+    .badge-contract  { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .badge-freelance { background: #ede9fe; color: #6d28d9; border: 1px solid #ddd6fe; }
+    .badge-parttime  { background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; }
+
+    /* ── Responsive: stack on mobile ─────────────────────────────── */
+    @media (max-width: 767px) {
+      .exp-table, .exp-table tbody,
+      .exp-table tr, .exp-table td {
+        display: block;
+        width: 100%;
+      }
+      .exp-table thead { display: none; }    /* hide col headers on mobile */
+
+      .exp-row td {
+        padding: 10px 0;
+      }
+      .exp-row td:first-child { padding-top: 24px; }
+      .exp-row td:last-child  { padding-bottom: 24px; }
+
+      .col-company  { min-width: unset; }
+      .col-duration { min-width: unset; }
+      .col-type { text-align: left; }
+    }
+
+    /* ── Entrance animation ───────────────────────────────────────── */
+    .exp-row {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rowIn .45s ease forwards;
+    }
+    .exp-row:nth-child(1) { animation-delay: .05s; }
+    .exp-row:nth-child(2) { animation-delay: .15s; }
+    .exp-row:nth-child(3) { animation-delay: .25s; }
+    .exp-row:nth-child(4) { animation-delay: .35s; }
+    @keyframes rowIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+ <section class="py-5">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="section-label">Career</div>
+    <h2 class="section-title">Work <span>Experience</span></h2>
+
+    <!-- Table wrapper — horizontal scroll on very small screens -->
+    <div class="table-responsive">
+      <table class="exp-table">
+
+        <!-- Column headers -->
+        <thead>
+          <tr>
+            <th>Company &amp; Role</th>
+            <th>Duration</th>
+            <th>Responsibilities</th>
+            <th style="text-align:right;">Type</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <!-- ══════════════════════════════════════════
+               ROW 1
+          ══════════════════════════════════════════ -->
+          <tr class="exp-row">
+
+            <!-- Company -->
+            <td class="col-company">
+              <div class="company-logo" style="background: linear-gradient(135deg,#2563eb,#60a5fa);">Z</div>
+              <div class="company-name">ZimTech Solutions</div>
+              <div class="company-role">Senior Data Analyst</div>
+            </td>
+
+            <!-- Duration -->
+            <td class="col-duration">
+              <div class="duration-range">Jan 2022 – Present</div>
+              <div class="duration-length">
+                <span class="duration-dot"></span>2 yrs 4 mos
+              </div>
+            </td>
+
+            <!-- Duties -->
+            <td class="col-duties">
+              <ul class="duty-list">
+                <li><span class="duty-bullet"></span>Built and maintained 15+ Power BI dashboards tracking KPIs across sales, finance, and operations departments.</li>
+                <li><span class="duty-bullet"></span>Wrote complex SQL queries on datasets exceeding 50M rows, reducing report generation time by 60%.</li>
+                <li><span class="duty-bullet"></span>Led monthly data reviews with C-suite executives, translating findings into actionable business strategies.</li>
+                <li><span class="duty-bullet"></span>Automated weekly reporting pipeline using Python (Pandas, Airflow), saving 12+ manual hours per week.</li>
+              </ul>
+            </td>
+
+            <!-- Type -->
+            <td class="col-type">
+              <span class="type-badge badge-fulltime">Full-time</span>
+            </td>
+
+          </tr>
+
+          <!-- ══════════════════════════════════════════
+               ROW 2
+          ══════════════════════════════════════════ -->
+          <tr class="exp-row">
+
+            <td class="col-company">
+              <div class="company-logo" style="background: linear-gradient(135deg,#7c3aed,#a78bfa);">D</div>
+              <div class="company-name">DataBridge Africa</div>
+              <div class="company-role">Data Analyst</div>
+            </td>
+
+            <td class="col-duration">
+              <div class="duration-range">Mar 2020 – Dec 2021</div>
+              <div class="duration-length">
+                <span class="duration-dot"></span>1 yr 10 mos
+              </div>
+            </td>
+
+            <td class="col-duties">
+              <ul class="duty-list">
+                <li><span class="duty-bullet"></span>Designed and delivered customer segmentation models increasing targeted campaign ROI by 34%.</li>
+                <li><span class="duty-bullet"></span>Performed exploratory data analysis on e-commerce datasets using Python and Tableau.</li>
+                <li><span class="duty-bullet"></span>Collaborated with marketing team to track funnel metrics and identify drop-off points across 6 channels.</li>
+                <li><span class="duty-bullet"></span>Maintained and optimised PostgreSQL databases, improving query performance by up to 45%.</li>
+              </ul>
+            </td>
+
+            <td class="col-type">
+              <span class="type-badge badge-fulltime">Full-time</span>
+            </td>
+
+          </tr>
+
+          <!-- ══════════════════════════════════════════
+               ROW 3
+          ══════════════════════════════════════════ -->
+          <tr class="exp-row">
+
+            <td class="col-company">
+              <div class="company-logo" style="background: linear-gradient(135deg,#059669,#34d399);">F</div>
+              <div class="company-name">FinSight Consulting</div>
+              <div class="company-role">Junior Business Analyst</div>
+            </td>
+
+            <td class="col-duration">
+              <div class="duration-range">Jun 2019 – Feb 2020</div>
+              <div class="duration-length">
+                <span class="duration-dot"></span>9 mos
+              </div>
+            </td>
+
+            <td class="col-duties">
+              <ul class="duty-list">
+                <li><span class="duty-bullet"></span>Assisted senior analysts in building financial models and performance benchmarking reports in Excel/VBA.</li>
+                <li><span class="duty-bullet"></span>Cleaned and validated large datasets, ensuring data integrity across monthly financial reconciliations.</li>
+                <li><span class="duty-bullet"></span>Produced weekly management reports summarising KPIs for 5 client accounts.</li>
+              </ul>
+            </td>
+
+            <td class="col-type">
+              <span class="type-badge badge-contract">Contract</span>
+            </td>
+
+          </tr>
+
+          <!-- ══════════════════════════════════════════
+               ROW 4
+          ══════════════════════════════════════════ -->
+          <tr class="exp-row">
+
+            <td class="col-company">
+              <div class="company-logo" style="background: linear-gradient(135deg,#f59e0b,#fbbf24);">S</div>
+              <div class="company-name">Self-Employed</div>
+              <div class="company-role">Freelance Data Analyst</div>
+            </td>
+
+            <td class="col-duration">
+              <div class="duration-range">Jan 2018 – May 2019</div>
+              <div class="duration-length">
+                <span class="duration-dot"></span>1 yr 5 mos
+              </div>
+            </td>
+
+            <td class="col-duties">
+              <ul class="duty-list">
+                <li><span class="duty-bullet"></span>Delivered ad-hoc data analysis projects for SMEs across retail, logistics, and hospitality sectors.</li>
+                <li><span class="duty-bullet"></span>Built custom Excel dashboards with dynamic charts and VBA macros for non-technical clients.</li>
+                <li><span class="duty-bullet"></span>Provided data cleaning and transformation services, preparing datasets for further analysis.</li>
+              </ul>
+            </td>
+
+            <td class="col-type">
+              <span class="type-badge badge-freelance">Freelance</span>
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div><!-- /table-responsive -->
+
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

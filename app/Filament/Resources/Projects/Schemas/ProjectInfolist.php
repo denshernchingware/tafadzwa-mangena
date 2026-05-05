@@ -16,7 +16,8 @@ class ProjectInfolist
                 TextEntry::make('subtitle'),
                 TextEntry::make('description')
                     ->columnSpanFull(),
-                ImageEntry::make('image'),
+                ImageEntry::make('image')
+                    ->disk('public'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

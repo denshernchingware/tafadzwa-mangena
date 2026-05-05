@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('main_image');
             $table->string('additional_image')->nullable();
             $table->string('role');
-            $table->string('cv_file');
+            $table->string('cv_file')->nullable();
             $table->timestamps();
         });
     }

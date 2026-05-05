@@ -12,6 +12,6 @@ class Hero extends Model
         'main_image',
         'additional_image',
         'role',
-        'cv_file',
+        //'cv_file',
     ];
 }
