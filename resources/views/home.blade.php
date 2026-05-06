@@ -436,134 +436,79 @@
                             <div class="col-12 col-md-8">
                                 <table class="timeline-table">
                                     <tbody>
-
-                                        <tr>
-                                            <td class="col-count">BSc</td>
-                                            <td class="col-divider"></td>
-                                            <td class="col-info">
-                                                <p class="entry-title">Computer Science – <strong>MIT</strong></p>
-                                                <p class="entry-sub">Major in Human-Computer Interaction</p>
-                                            </td>
-                                            <td class="col-year">2018</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="col-count">MSc</td>
-                                            <td class="col-divider"></td>
-                                            <td class="col-info">
-                                                <p class="entry-title">Interaction Design – <strong>RCA London</strong></p>
-                                                <p class="entry-sub">Thesis: Embodied Interfaces in AR</p>
-                                            </td>
-                                            <td class="col-year">2020</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="col-count">Cert</td>
-                                            <td class="col-divider"></td>
-                                            <td class="col-info">
-                                                <p class="entry-title">UX Strategy – <strong>Nielsen Norman Group</strong>
-                                                </p>
-                                                <p class="entry-sub">Professional certification</p>
-                                            </td>
-                                            <td class="col-year">2021</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="col-count">Boot</td>
-                                            <td class="col-divider"></td>
-                                            <td class="col-info">
-                                                <p class="entry-title">Full-Stack Development – <strong>Ironhack</strong>
-                                                </p>
-                                                <p class="entry-sub">React, Node.js, PostgreSQL</p>
-                                            </td>
-                                            <td class="col-year">2022</td>
-                                        </tr>
-
+                                        @foreach ($educations as $education)
+                                            <tr>
+                                                <td class="col-count">{{ $education->program }}</td>
+                                                <td class="col-divider"></td>
+                                                <td class="col-info">
+                                                    <p class="entry-title">{{ $education->description }}</p>
+                                                    <p class="entry-sub">{{ $education->institution_name }}</p>
+                                                </td>
+                                                <td class="col-year">{{ $education->year_from }} -
+                                                    {{ $education->year_to }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
 
 
                             </div>
 
+
                             <hr class="section-divider" />
+
+
 
                             <!-- ══════════════ EXPERIENCE ══════════════ -->
                             <div class="row align-items-start g-5">
 
                                 <!-- Left: heading -->
                                 <div class="col-12 col-md-4">
-                                    <p class="section-label">Career</p>
-                                    <h2 class="fw-700 ls-minus-1px mb-20px">Work<br>experience.</h2>
-                                    <p class="col-md-9 last-paragraph-no-margin ">Currently improving user experience and
-                                        interface design as lead designer director at Crafto Theme Agency.</p>
+                                    @if ($experiences->isNotEmpty())
+                                        <p class="section-label">Career</p>
+                                        <h2 class="fw-700 ls-minus-1px mb-20px">Work<br>experience.</h2>
+                                        <p class="col-md-9 last-paragraph-no-margin ">Currently improving user experience
+                                            and
+                                            interface design as lead designer director at Crafto Theme Agency.</p>
+                                    @endif
+
                                 </div>
 
                                 <!-- Right: table -->
                                 <div class="col-12 col-md-8">
                                     <table class="timeline-table">
                                         <tbody>
-
-                                            <tr>
-                                                <td class="col-count">9×</td>
-                                                <td class="col-divider"></td>
-                                                <td class="col-info">
-                                                    <p class="entry-title">Lead Product Designer – <strong>Crafto
-                                                            Agency</strong></p>
-                                                    <p class="entry-sub">Site of the day · Awwwards
-                                                    </p>
-                                                </td>
-                                                <td class="col-year">2021</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td class="col-count">2×</td>
-                                                <td class="col-divider"></td>
-                                                <td class="col-info">
-                                                    <p class="entry-title">Senior UI Designer – <strong>Moove
-                                                            Studio</strong></p>
-                                                    <p class="entry-sub">Site of the year · CSS Design Awards</p>
-                                                </td>
-                                                <td class="col-year">2020</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td class="col-count">4×</td>
-                                                <td class="col-divider"></td>
-                                                <td class="col-info">
-                                                    <p class="entry-title">UI/UX Designer – <strong>Pixelflow</strong></p>
-                                                    <p class="entry-sub">Site of the month · Awwwards</p>
-                                                </td>
-                                                <td class="col-year">2019</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td class="col-count">3×</td>
-                                                <td class="col-divider"></td>
-                                                <td class="col-info">
-                                                    <p class="entry-title">Junior Designer – <strong>The Portfolio
-                                                            Co.</strong></p>
-                                                    <p class="entry-sub">Site of the year · The Portfolio</p>
-                                                </td>
-                                                <td class="col-year">2018</td>
+                                            @forelse ($experiences as $experience)
+                                                <tr>
+                                                    <td class="col-count">9×</td>
+                                                    <td class="col-divider"></td>
+                                                    <td class="col-info">
+                                                        <p class="entry-title">
+                                                            <strong>{{ $experience->company_name }}</strong>
+                                                        </p>
+                                                        <p class="entry-sub">{{ $experience->description }}
+                                                        </p>
+                                                    </td>
+                                                    <td class="col-year">{{ $experience->year }}</td>
+                                                @empty
+                                                    <div class="alert alert-secondary text-center" role="alert">
+                                                        No experience uploaded yet.
+                                                    </div>
+                                            @endforelse
                                             </tr>
 
                                         </tbody>
                                     </table>
 
-                                    <!-- dot -->
-                                    <div class="mt-3 d-flex justify-content-end">
-                                        <button class="dot-btn" aria-label="More">
-                                            <span class="dot-inner"></span>
-                                        </button>
-                                    </div>
+
+
                                 </div>
 
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
     </section>
     <!-- end section -->
 @endsection

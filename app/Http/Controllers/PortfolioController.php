@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Education;
+use App\Models\Experience;
 use App\Models\Hero;
 use App\Models\Project;
 use App\Models\Skill;
@@ -17,7 +19,9 @@ class PortfolioController extends Controller
         $projects = Project::all();
         $abouts = About::all();
         $skills = Skill::all();
-        return view('home', compact('heroes', 'projects', 'abouts', 'skills'));
+        $educations = Education::all();
+        $experiences = Experience::all();
+        return view('home', compact('heroes', 'projects', 'abouts', 'skills', 'educations', 'experiences'));
     }
 
     public function allProjects()
