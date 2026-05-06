@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\Hero;
 use App\Models\Project;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
@@ -15,7 +16,8 @@ class PortfolioController extends Controller
         //dd($heroes);
         $projects = Project::all();
         $abouts = About::all();
-        return view('home', compact('heroes', 'projects', 'abouts'));
+        $skills = Skill::all();
+        return view('home', compact('heroes', 'projects', 'abouts', 'skills'));
     }
 
     public function allProjects()
