@@ -1,60 +1,68 @@
- <section class=bg-gradient-very-light-gray id=contact>
-        <div class=container>
-            <div
-                class="row row-cols-1 row-cols-lg-2 row-cols-md-1 g-0 justify-content-center box-shadow-extra-large border-radius-10px overflow-hidden">
-                <div class="col contact-form-style-04">
-                    <div class="h-100 md-h-450px sm-h-350px w-100 cover-background position-relative"
-                        style="background-image: url('images/contact.png')">
 
-                    </div>
-                </div>
-                <div class="col contact-form-style-04">
-                    <div class="p-13 md-p-10 bg-white">
-                        <h3 class="d-inline-block fw-600 text-dark-gray mb-8 ls-minus-1px">How we can help?</h3>
-                        <form id=contactForm action="/contacts" method=post>
-                            <input type=hidden name=_token value=F4Csc2daWVosHy66E2g9vpF0hRoIS3Vqs9yn69I0
-                                autocomplete=off> <label class="text-dark-gray mb-10px fw-500">Name<span
-                                    class=text-red>*</span></label>
-                            <input class="mb-20px bg-very-light-gray form-control required" required type=text
-                                name=name placeholder="Enter your name">
-                            <label class="text-dark-gray mb-10px fw-500">Email address<span
-                                    class=text-red>*</span></label>
-                            <input class="mb-20px bg-very-light-gray form-control required" required type=email
-                                name=email placeholder="Enter your email">
-                            <label class="text-dark-gray mb-10px fw-500">Phone<span class=text-red>*</span></label>
-                            <input class="mb-20px bg-very-light-gray form-control required" required type=text
-                                name=phone placeholder="Enter your phone number">
-                            <label class="text-dark-gray mb-10px fw-500">Message<span class=text-red>*</span></label>
-                            <textarea class="mb-20px bg-very-light-gray form-control required" required name=message
-                                placeholder="Enter your message"></textarea>
-                            <div class="position-relative terms-condition-box text-start d-inline-block mb-20px">
-                                <label>
-                                    <script src="https://www.google.com/recaptcha/api.js?" async defer></script>
-                                    <div data-sitekey=6LfR0vsqAAAAAKyKVameKtTvkQC9eCmP6M8hiV7_ class=g-recaptcha></div>
-                                </label>
-                            </div>
-                            <button id=submitBtn
-                                class="btn btn-large btn-round-edge btn-dark-gray btn-box-shadow w-100 mb-20px"
-                                type=submit>
-                                Submit
-                            </button>
-                            <div class="form-results mt-20px d-none"></div>
-                        </form>
-                        <script>
-                            document.getElementById('submitBtn').addEventListener('click', function(event) {
-                                event.preventDefault(); // Prevent default form submission
+<div class="section">
+  <div class="blob"></div>
 
-                                var recaptcha = document.querySelector('.g-recaptcha-response').value;
+  <div class="heading">
+    <h2 class="text-dark-gray fw-700 ls-minus-1px">Text</h2>
+    <p>Text who ever you want where ever you want any time you want —<br>enjoy contacting friends and families.</p>
+  </div>
 
-                                if (!recaptcha) {
-                                    alert('Please complete the reCAPTCHA verification.');
-                                } else {
-                                    document.getElementById('contactForm').submit(); // Submit the form if reCAPTCHA is selected
-                                }
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <form action="#" method="POST">
+
+    <div class="field">
+      <label for="first-name">First name</label>
+      <input type="text" id="first-name" name="first-name" autocomplete="given-name"/>
+    </div>
+
+    <div class="field">
+      <label for="last-name">Last name</label>
+      <input type="text" id="last-name" name="last-name" autocomplete="family-name"/>
+    </div>
+
+    <div class="field full">
+      <label for="company">Company</label>
+      <input type="text" id="company" name="company" autocomplete="organization"/>
+    </div>
+
+    <div class="field full">
+      <label for="email" class="red">Email</label>
+      <input type="email" id="email" name="email" autocomplete="email"/>
+    </div>
+
+    <div class="field full">
+      <label for="phone-number" class="green">Phone number</label>
+      <div class="phone-row">
+        <select id="country" name="country">
+          <option>US</option>
+          <option>CA</option>
+          <option>EU</option>
+          <option>UK</option>
+          <option>YE</option>
+          <option>MA</option>
+        </select>
+        <input type="tel" id="phone-number" name="phone-number" autocomplete="tel"/>
+      </div>
+    </div>
+
+    <div class="field full">
+      <label for="message" class="green">Message</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+    </div>
+
+    <div class="toggle-row">
+      <label class="switch">
+        <input type="checkbox" id="privacy-switch"/>
+        <span class="slider"></span>
+      </label>
+      <span class="toggle-label">
+        By selecting this, free palestine —
+        <a href="#">privacy&nbsp;policy</a>.
+      </span>
+    </div>
+
+    <div class="submit-wrap">
+      <button type="submit" class="btn-submit">Let's talk</button>
+    </div>
+
+  </form>
+</div>

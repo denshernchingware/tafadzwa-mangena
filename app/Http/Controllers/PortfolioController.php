@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Contact;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Hero;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
+
     public function index()
     {
         $heroes = Hero::all();
@@ -21,7 +23,8 @@ class PortfolioController extends Controller
         $skills = Skill::all();
         $educations = Education::all();
         $experiences = Experience::all();
-        return view('home', compact('heroes', 'projects', 'abouts', 'skills', 'educations', 'experiences'));
+        $contacts = Contact::all();
+        return view('home', compact('heroes', 'projects', 'abouts', 'skills', 'educations', 'experiences', 'contacts'));
     }
 
     public function allProjects()

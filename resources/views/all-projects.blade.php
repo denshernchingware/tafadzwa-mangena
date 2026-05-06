@@ -92,21 +92,9 @@
       </div>
       @endforeach
 
-    </div><!-- /row -->
-
-    <!-- ── All Projects CTA ────────────────────────────────────────────── -->
-    <div class="text-center mt-5 pt-2">
-      <a href="#" class="all-projects-btn">
-        View all projects
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-          <path d="M5 12h14M13 6l6 6-6 6"/>
-        </svg>
-      </a>
     </div>
-
                     </div>
                 </div>
             </div>
         </section>
-   @include('components.form')
 @endsection

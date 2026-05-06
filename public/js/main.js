@@ -1,5 +1,5 @@
 /* -------------------------------------------------------
- 
+
  Theme Name: Crafto - The Multipurpose HTML5 Template
  Theme URL: https://craftohtml.themezaa.com/
  Description: Elevate your online presence with Crafto - a modern, versatile, multipurpose Bootstrap 5 responsive HTML5, SCSS template using highly creative 52+ ready demos.
@@ -7,14 +7,14 @@
  Author ThemeForest URL: https://themeforest.net/user/themezaa
  Copyright(c) 2025 themezaa.com
  Version: 3.0
- 
+
  ------------------------------------------------------- */
 
 (function ($) {
 
     "use strict";
     /* ===================================
-     Change variables value as per your need 
+     Change variables value as per your need
      ====================================== */
     const {animate} = anime;
     var menuBreakPoint = 991;
@@ -632,7 +632,7 @@
         ;
     }
 
-    // Horizontal portfolio 
+    // Horizontal portfolio
     const ThreeDLetterMenuEffect = () => {
         $(".threeD-letter-menu .menu-item").each(function () {
             let _self = this,
@@ -722,7 +722,7 @@
 
 
 
-    // Minimal portfolio 
+    // Minimal portfolio
     const sticky_container = document.querySelector(".sticky-image-distortion-wrapper");
     if (typeof (sticky_container) != 'undefined' && sticky_container != null) {
         let winsize;
@@ -794,7 +794,7 @@
      Blog
      ====================================== */
 
-    // Blog isotope filter 
+    // Blog isotope filter
     if (typeof imagesLoaded === 'function') {
         $('.blog-wrapper').each(function () {
             var _this = $(this);
@@ -840,10 +840,10 @@
     });
 
     /* ===================================
-     Image gallery 
+     Image gallery
      ====================================== */
 
-    // Image gallery isotope filter 
+    // Image gallery isotope filter
     if (typeof imagesLoaded === 'function') {
         $('.gallery-wrapper').each(function () {
             var _this = $(this);
@@ -1755,7 +1755,7 @@
         });
     }
 
-    // Fancy text 
+    // Fancy text
     function FancyTextDefault(item, ftOptions) {
         let text_effect = ftOptions.effect,
                 duration = ftOptions.duration ? ftOptions.duration : 3000,
@@ -2284,7 +2284,7 @@
             setParallax();
         }
 
-        // Non retina image code 
+        // Non retina image code
         $("img:not([data-at2x])").each(function () {
             $(this).attr('data-no-retina', '');
         });
@@ -4027,3 +4027,219 @@ function initMap() {
         }
     });
 }
+
+// custom js
+ // Desktop flip only (≥ 992px)
+        // Adds / removes .flipped on mouseenter / mouseleave.
+        // CSS handles all the visual switching — no DOM creation here.
+
+        const DESKTOP = () => window.innerWidth >= 992;
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if (DESKTOP()) card.classList.add('flipped');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('flipped');
+            });
+        });
+//  bot
+const fab = document.getElementById('fab');
+        const chatWindow = document.getElementById('chat-window');
+        const messagesEl = document.getElementById('messages');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+
+        let isOpen = false;
+        let isWaiting = false;
+        let conversationHistory = [];
+        let greeted = false;
+
+        // Toggle chat
+        fab.addEventListener('click', () => {
+            isOpen = !isOpen;
+            fab.classList.toggle('open', isOpen);
+            chatWindow.classList.toggle('open', isOpen);
+            if (isOpen && !greeted) {
+                greeted = true;
+                setTimeout(() => greet(), 400);
+            }
+            if (isOpen) setTimeout(() => userInput.focus(), 350);
+        });
+
+        // Input events
+        userInput.addEventListener('input', () => {
+            sendBtn.disabled = userInput.value.trim() === '' || isWaiting;
+            userInput.style.height = 'auto';
+            userInput.style.height = Math.min(userInput.scrollHeight, 100) + 'px';
+        });
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                send();
+            }
+        });
+        sendBtn.addEventListener('click', send);
+
+        function scrollBottom() {
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function addMsg(role, text) {
+            const div = document.createElement('div');
+            div.className = `msg ${role}`;
+
+            if (role === 'bot') {
+                div.innerHTML = `
+      <div class="msg-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+          <line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
+        </svg>
+      </div>
+      <div class="bubble">${formatText(text)}</div>`;
+            } else {
+                div.innerHTML = `<div class="bubble">${formatText(text)}</div>`;
+            }
+
+            messagesEl.appendChild(div);
+            scrollBottom();
+            return div;
+        }
+
+        function formatText(t) {
+            return t
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+        }
+
+        function addQuickReplies(options) {
+            const div = document.createElement('div');
+            div.className = 'quick-replies';
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'qr';
+                btn.textContent = opt;
+                btn.addEventListener('click', () => {
+                    div.remove();
+                    handleUserMessage(opt);
+                });
+                div.appendChild(btn);
+            });
+            messagesEl.appendChild(div);
+            scrollBottom();
+        }
+
+        function showTyping() {
+            const div = document.createElement('div');
+            div.className = 'typing-indicator';
+            div.id = 'typing';
+            div.innerHTML = `
+    <div class="msg-avatar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+        <line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
+      </svg>
+    </div>
+    <div class="typing-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;
+            messagesEl.appendChild(div);
+            scrollBottom();
+        }
+
+        function hideTyping() {
+            const t = document.getElementById('typing');
+            if (t) t.remove();
+        }
+
+        function greet() {
+            addMsg('bot', "👋 Hi there! I'm **Breeze**, your MightyBreeze assistant.\n\nHow can I help you today?");
+            addQuickReplies([
+                '💧 Borehole Drilling',
+                '☀️ Solar Installation',
+                '🌱 Irrigation Systems',
+                '⛽ Bush Pumps',
+                '📞 Get a Quote',
+            ]);
+        }
+
+        async function send() {
+            const text = userInput.value.trim();
+            if (!text || isWaiting) return;
+            userInput.value = '';
+            userInput.style.height = 'auto';
+            sendBtn.disabled = true;
+            handleUserMessage(text);
+        }
+
+        async function handleUserMessage(text) {
+            addMsg('user', text);
+            conversationHistory.push({
+                role: 'user',
+                content: text
+            });
+
+            isWaiting = true;
+            sendBtn.disabled = true;
+            showTyping();
+
+            try {
+                const response = await fetch('https://api.anthropic.com/v1/messages', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: 'claude-sonnet-4-20250514',
+                        max_tokens: 1000,
+                        system: `You are Breeze, the friendly and knowledgeable AI assistant for MightyBreeze — a professional borehole drilling, solar installation, irrigation, and bush pump company based in Zimbabwe.
+
+Company info:
+- Services: Borehole Drilling, Solar Installation (home & borehole), Irrigation Systems, Bush Pumps
+- Experience: 14+ years
+- Contact: +263 77 106 0581, +263 71 899 5907, +263 77 246 6985
+- Hours: Mon–Sat 8:00–17:30, Sunday CLOSED
+- Website: mightybreeze.co.zw
+
+Your role:
+- Help visitors understand services and choose the right solution
+- Collect leads (name, location, service needed, phone number) naturally in conversation
+- Answer questions about borehole depth, solar sizing, irrigation setup, maintenance
+- Give rough timeframes and explain what factors affect pricing
+- Be warm, concise, and professional — like a helpful salesperson, not a robot
+- Suggest contacting the team for detailed quotes
+- When a user provides their details, confirm you'll pass them on to the team
+- Keep responses short (2–4 sentences max unless explaining something technical)
+- Use occasional relevant emojis to keep things friendly
+- Never make up specific prices — say pricing depends on site assessment`,
+                        messages: conversationHistory,
+                    }),
+                });
+
+                const data = await response.json();
+                hideTyping();
+
+                const reply = data.content?.[0]?.text ||
+                    "Sorry, I had a hiccup. Please try again or call us on +263 77 106 0581.";
+                conversationHistory.push({
+                    role: 'assistant',
+                    content: reply
+                });
+                addMsg('bot', reply);
+
+                // Contextual quick replies after first AI response
+                if (conversationHistory.length <= 4) {
+                    addQuickReplies(['📍 Site Visit Request', '💰 Cost Estimate', '⏱️ How long does it take?',
+                        '📞 Call Now'
+                    ]);
+                }
+
+            } catch (err) {
+                hideTyping();
+                addMsg('bot',
+                    "Oops, something went wrong on my end. Please call us directly on **+263 77 106 0581** and we'll help you right away! 📞"
+                    );
+            }
+
+            isWaiting = false;
+            sendBtn.disabled = userInput.value.trim() === '';
+        }
