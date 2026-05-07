@@ -19,7 +19,6 @@ class PortfolioController extends Controller
     public function index()
     {
         $heroes = Hero::all();
-        //dd($heroes);
         $projects = Project::all();
         $abouts = About::all();
         $skills = Skill::all();

@@ -100,13 +100,13 @@
                                 {{-- description 1 here --}}
                                 <p class="w-85 lg-w-100">{{ $about->description1 }}</p>
 
-                                <a href="storage/cvs/Ngoni-Sendama-Laravel-Developer-CV.pdf" download
-                                    class="btn btn-large btn-rounded with-rounded btn-base-color btn-round-edge btn-box-shadow">
-                                    Download CV
-                                    <span class="text-white bg-orient-blue">
-                                        <i class="feather icon-feather-download icon-small"></i>
-                                    </span>
-                                </a>
+                                <a href="@if ($contacts->isNotEmpty() && $contacts->first()->cv) {{ route('download-cv') }} @else # @endif"
+                                            class="btn btn-large btn-rounded with-rounded btn-base-color btn-round-edge btn-box-shadow">
+                                            Download CV
+                                            <span class="text-white bg-orient-blue">
+                                                <i class="feather icon-feather-download icon-small"></i>
+                                            </span>
+                                        </a>
                             </div>
                             <div class="col-xl-8 col-lg-7"
                                 data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
