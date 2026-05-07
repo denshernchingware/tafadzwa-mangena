@@ -34,7 +34,7 @@
 
                                     <span class="fw-700 text-decoration-line-bottom-medium text-black"></span>
                                 </div>
-                                 {{-- <a href="@if ($contacts->isNotEmpty() && $contacts->first()->cv) {{ route('download-cv') }} @else # @endif"
+                                {{-- <a href="@if ($contacts->isNotEmpty() && $contacts->first()->cv) {{ route('download-cv') }} @else # @endif"
                                             class="btn btn-large btn-rounded with-rounded  btn-round-edge btn-box-shadow">
                                             Download CV
                                             <span class="text-white bg-orient-blue">
@@ -44,28 +44,31 @@
 
                             </div>
                             {{-- Contact icon SVG alongside Download CV btn --}}
-<div class="d-inline-flex align-items-center gap-3">
+                            <div class="d-inline-flex align-items-center gap-3">
 
-    <a href="@if ($contacts->isNotEmpty() && $contacts->first()->cv) {{ route('download-cv') }} @else # @endif"
-       class="btn btn-large btn-rounded with-rounded btn-round-edge btn-box-shadow download-cv-btn">
-       Download CV
-       <span class="text-white bg-orient-blue">
-           <i class="feather icon-feather-download icon-small"></i>
-       </span>
-    </a>
+                                <a href="@if ($contacts->isNotEmpty() && $contacts->first()->cv) {{ route('download-cv') }} @else # @endif"
+                                    class="btn btn-large btn-rounded with-rounded btn-round-edge btn-box-shadow download-cv-btn">
+                                    Download CV
+                                    <span class="text-white bg-orient-blue">
+                                        <i class="feather icon-feather-download icon-small"></i>
+                                    </span>
+                                </a>
 
-    {{-- Contact SVG icon --}}
+                                {{-- Contact SVG icon --}}
 
-    <a href="#contact" class="contact-svg-link" title="Contact me">
-       <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
-    <circle cx="19" cy="19" r="18.5" stroke="#111111" stroke-width="1"/>
-    <path d="M24.5 22.5L22.5 24.5C20.5 26.5 14.5 21.5 13 20C11.5 18.5 11.5 13.5 13.5 12.5L15.5 11.5L17.5 15.5L16 17C16 17 16.5 18.5 18 20C19.5 21.5 21 22 21 22L22.5 20.5L24.5 22.5Z"
-          stroke="#111111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-</svg>
-    </a>
+                                <a href="#contact" class="contact-svg-link" title="Contact me">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38"
+                                        viewBox="0 0 38 38" fill="none">
+                                        <circle cx="19" cy="19" r="18.5" stroke="#111111" stroke-width="1" />
+                                        <path
+                                            d="M24.5 22.5L22.5 24.5C20.5 26.5 14.5 21.5 13 20C11.5 18.5 11.5 13.5 13.5 12.5L15.5 11.5L17.5 15.5L16 17C16 17 16.5 18.5 18 20C19.5 21.5 21 22 21 22L22.5 20.5L24.5 22.5Z"
+                                            stroke="#111111" stroke-width="1.4" stroke-linecap="round"
+                                            stroke-linejoin="round" fill="none" />
+                                    </svg>
+                                </a>
 
 
-</div>
+                            </div>
                         </div>
                     </div>
                     <div
@@ -132,12 +135,12 @@
                                 <p class="w-85 lg-w-100">{{ $about->description1 }}</p>
 
                                 <a href="@if ($contacts->isNotEmpty() && $contacts->first()->cv) {{ route('download-cv') }} @else # @endif"
-                                            class="btn btn-large btn-rounded with-rounded btn-base-color btn-round-edge btn-box-shadow">
-                                            Download CV
-                                            <span class="text-white bg-orient-blue">
-                                                <i class="feather icon-feather-download icon-small"></i>
-                                            </span>
-                                        </a>
+                                    class="btn btn-large btn-rounded with-rounded btn-base-color btn-round-edge btn-box-shadow">
+                                    Download CV
+                                    <span class="text-white bg-orient-blue">
+                                        <i class="feather icon-feather-download icon-small"></i>
+                                    </span>
+                                </a>
                             </div>
                             <div class="col-xl-8 col-lg-7"
                                 data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
@@ -236,7 +239,7 @@
 
                     </div>
                     <div class="text-center mt-5 pt-2">
-                        <a href="{{ route("all-projects") }}" class="all-projects-btn">
+                        <a href="{{ route('all-projects') }}" class="all-projects-btn">
                             View all projects
                             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"
                                 viewBox="0 0 24 24">
@@ -502,7 +505,8 @@
                                     @if ($experiences->isNotEmpty())
                                         <p class="section-label">Career</p>
                                         <h2 class="fw-700 ls-minus-1px mb-20px">Work<br>experience.</h2>
-                                        <p class="col-md-9 last-paragraph-no-margin ">Highly motivated and detail-oriented professional with experience in teamwork, and project coordination. </p>
+                                        <p class="col-md-9 last-paragraph-no-margin ">Highly motivated and detail-oriented
+                                            professional with experience in teamwork, and project coordination. </p>
                                     @endif
 
                                 </div>
