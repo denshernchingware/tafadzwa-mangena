@@ -7,6 +7,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class EducationTable
@@ -15,7 +16,18 @@ class EducationTable
     {
         return $table
             ->columns([
-                //
+            TextColumn::make('year_from')
+                ->searchable(),
+            TextColumn::make('year_to')
+                ->searchable(),
+
+            TextColumn::make('program')
+                ->searchable(),
+
+            TextColumn::make('description')
+                ->limit(50)
+                ->searchable(),
+
             ])
             ->filters([
                 //

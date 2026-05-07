@@ -1,5 +1,5 @@
 
-<div class="section">
+<div class="section mt-60px">
   <div class="blob"></div>
 
   <div class="heading">

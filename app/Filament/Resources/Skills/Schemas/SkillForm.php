@@ -13,6 +13,7 @@ class SkillForm
         return $schema
             ->components([
                 Textarea::make('description')
+                    ->label('percentage')
                     ->required()
                     ->columnSpanFull(),
                 TextInput::make('skill')

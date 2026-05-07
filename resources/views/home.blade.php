@@ -179,7 +179,7 @@
                                         <form action="">
 
                                         </form>
-                                        <a href="{{ route('project' , $project->id) }}" class="view-btn">
+                                        <a href="{{ route('project', $project->id) }}" class="view-btn">
                                             View Project
                                             <svg width="13" height="13" fill="none" stroke="currentColor"
                                                 stroke-width="2.2" viewBox="0 0 24 24">
@@ -192,9 +192,9 @@
                                         <div class="m-category">{{ $project->subtitle }}</div>
                                         <div class="m-title">{{ $project->title }}</div>
                                         <p class="m-desc">{{ $project->description }}</p>
-                                        <a href="{{ route('project', $project->id) }}" class="read-more">Read More <svg width="11"
-                                                height="11" fill="none" stroke="currentColor" stroke-width="2.5"
-                                                viewBox="0 0 24 24">
+                                        <a href="{{ route('project', $project->id) }}" class="read-more">Read More <svg
+                                                width="11" height="11" fill="none" stroke="currentColor"
+                                                stroke-width="2.5" viewBox="0 0 24 24">
                                                 <path d="M5 12h14M13 6l6 6-6 6" />
                                             </svg></a>
                                     </div>
@@ -205,7 +205,7 @@
 
                     </div>
                     <div class="text-center mt-5 pt-2">
-                        <a href="#" class="all-projects-btn">
+                        <a href="{{ route("all-projects") }}" class="all-projects-btn">
                             View all projects
                             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"
                                 viewBox="0 0 24 24">
@@ -307,7 +307,7 @@
                         <div class="swiper-slide">
                             <div
                                 class="fs-150 xl-fs-120 sm-fs-80 text-black fw-600 ls-minus-5px sm-ls-minus-4px word-break-normal">
-                                Adninistration.</div>
+                                Administration.</div>
                         </div>
                         <!-- end client item -->
                         <!-- start client item -->
@@ -357,7 +357,7 @@
             </div>
         </div>
         <div id="expertise" class="container overflow-y-hidden">
-            <div class="row align-items-end flex-column-reverse flex-lg-row">
+            <div class="row align-items-start flex-column-reverse flex-lg-row">
                 <div class="col-lg-7 position-relative overflow-hidden">
                     <div class="outside-box-bottom-2 outside-box-left-5">
                         <div class="atropos" data-atropos>
@@ -379,17 +379,19 @@
                 <div class="col-lg-5 mb-6 mt-6 md-mb-0"
                     data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                     <h4 class="fw-600 text-white mb-20px ls-minus-1px">Skills and Certifications</h4>
+
+                    <p class="w-90 text-black xl-w-100">A comprehensive toolkit of data analysis technologies and
+                        analytical skills developed through hands-on project experience</p>
                     @foreach ($skills as $skill)
-                        <p class="w-90 text-black xl-w-100">{{ $skill->description }}</p>
                         <div class="progress-bar-style-01 mt-14 d-block">
                             <!-- start progress bar item -->
                             <div class="progress mb-12 sm-mb-20 bg-transparent">
                                 <div class="progress-bar-title d-inline-block text-black text-uppercase fs-14 fw-600">
                                     {{ $skill->skill }}</div>
-                                <div class="progress-bar bg-black" role="progressbar" aria-valuenow="80"
-                                    aria-valuemin="0" aria-valuemax="100" aria-label="{{ $skill->skill }}">
-                                    <span
-                                        class="progress-bar-percent text-center bg-black fs-11 lh-12 text-white">80%</span>
+                                <div class="progress-bar bg-black" role="progressbar"
+                                    aria-valuenow="{{ $skill->description }}" aria-valuemin="0" aria-valuemax="100"
+                                    aria-label="{{ $skill->skill }}">
+                                    <span class="progress-bar-percent text-center bg-black fs-11 lh-12 text-white"></span>
                                 </div>
                             </div>
                             <!-- end progress bar item -->
@@ -469,9 +471,7 @@
                                     @if ($experiences->isNotEmpty())
                                         <p class="section-label">Career</p>
                                         <h2 class="fw-700 ls-minus-1px mb-20px">Work<br>experience.</h2>
-                                        <p class="col-md-9 last-paragraph-no-margin ">Currently improving user experience
-                                            and
-                                            interface design as lead designer director at Crafto Theme Agency.</p>
+                                        <p class="col-md-9 last-paragraph-no-margin ">Highly motivated and detail-oriented professional with experience in teamwork, and project coordination. </p>
                                     @endif
 
                                 </div>
@@ -493,8 +493,22 @@
                                                     </td>
                                                     <td class="col-year">{{ $experience->year }}</td>
                                                 @empty
-                                                    <div class="alert alert-secondary text-center" role="alert">
-                                                        No experience uploaded yet.
+                                                    <div class="alert-wrap" role="alert"
+                                                        aria-label="No experience uploaded yet">
+                                                        <div class="alert-card">
+                                                            <div class="particles" id="particles"></div>
+                                                            <div class="pulse-ring"></div>
+                                                            <div class="pulse-ring"></div>
+                                                            <div class="pulse-ring"></div>
+
+                                                            <div class="icon-wrap">
+                                                                <i class="ti ti-briefcase" aria-hidden="true"></i>
+                                                            </div>
+
+                                                            <p class="alert-title">No experience uploaded yet<span
+                                                                    class="cursor"></span></p>
+
+                                                        </div>
                                                     </div>
                                             @endforelse
                                             </tr>

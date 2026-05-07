@@ -21738,7 +21738,7 @@
     margin-bottom: 3rem;
   }
 
-  
+
 
   .heading p {
     margin-top: 0.5rem;
@@ -21890,4 +21890,161 @@
   @media (max-width: 540px) {
     form { grid-template-columns: 1fr; }
     .field.full, .toggle-row, .submit-wrap { grid-column: 1; }
+  }
+
+
+  /* exp */
+@keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    70% { transform: scale(1.4); opacity: 0; }
+    100% { transform: scale(1.4); opacity: 0; }
+  }
+  @keyframes float-up {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes fade-slide-in {
+    0% { opacity: 0; transform: translateY(16px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  @keyframes dash-draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @keyframes particle-float {
+    0% { transform: translateY(0) scale(1); opacity: 0.7; }
+    100% { transform: translateY(-40px) scale(0); opacity: 0; }
+  }
+
+  .alert-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1rem;
+    animation: fade-slide-in 0.6s ease both;
+  }
+
+  .alert-card {
+    position: relative;
+    background: var(--color-background-primary);
+    border: 1.5px dashed #E24B4A;
+    border-radius: var(--border-radius-lg);
+    padding: 2rem 2.5rem;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #E24B4A;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    animation: pulse-ring 2.4s ease-out infinite;
+    pointer-events: none;
+  }
+  .pulse-ring:nth-child(2) { animation-delay: 0.8s; }
+  .pulse-ring:nth-child(3) { animation-delay: 1.6s; }
+
+  .icon-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #FCEBEB;
+    margin-bottom: 1rem;
+    animation: float-up 3s ease-in-out infinite;
+  }
+
+  .icon-wrap i {
+    font-size: 28px;
+    color: #A32D2D;
+  }
+
+  .alert-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin: 0 0 6px;
+    background: linear-gradient(90deg, #A32D2D 0%, #E24B4A 40%, #A32D2D 80%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .alert-sub {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin: 0 0 1.2rem;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 14px;
+    background: #E24B4A;
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink-cursor 1s step-end infinite;
+  }
+
+  .upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    background: #E24B4A;
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+  .upload-btn:hover { background: #A32D2D; transform: translateY(-1px); }
+  .upload-btn:active { transform: scale(0.97); }
+
+  .particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #F09595;
+    animation: particle-float 3s ease-in infinite;
+    opacity: 0;
+  }
+
+  svg.dashed-border {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    pointer-events: none;
   }

@@ -18,6 +18,16 @@ class AboutsTable
             ->columns([
                 TextColumn::make('title')
                     ->searchable(),
+            TextColumn::make('description1')
+         
+                ->limit(20)
+                ->searchable(),
+            TextColumn::make('description2')
+                ->limit(20)
+                ->searchable(),
+            TextColumn::make('description3')
+                ->limit(20)
+                ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -4243,3 +4243,24 @@ Your role:
             isWaiting = false;
             sendBtn.disabled = userInput.value.trim() === '';
         }
+
+
+// exp
+
+const container = document.getElementById('particles');
+  const positions = [
+    { left: '15%', top: '20%', delay: '0s', dur: '2.8s' },
+    { left: '75%', top: '30%', delay: '0.6s', dur: '3.2s' },
+    { left: '30%', top: '70%', delay: '1.2s', dur: '2.5s' },
+    { left: '60%', top: '65%', delay: '0.3s', dur: '3.6s' },
+    { left: '85%', top: '55%', delay: '1.8s', dur: '2.9s' },
+    { left: '10%', top: '50%', delay: '0.9s', dur: '3.4s' },
+  ];
+  positions.forEach(p => {
+    const el = document.createElement('div');
+    el.className = 'particle';
+    el.style.left = p.left;
+    el.style.top = p.top;
+    el.style.animationDelay = p.delay;
+    el.style.animationDuration = p.dur;
+    container.appendChild(el);});

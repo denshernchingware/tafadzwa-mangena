@@ -18,6 +18,9 @@ class SkillsTable
             ->columns([
                 TextColumn::make('skill')
                     ->searchable(),
+            TextColumn::make('description')
+                ->label('percentage')
+                ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

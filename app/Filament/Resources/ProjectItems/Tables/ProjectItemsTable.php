@@ -18,7 +18,8 @@ class ProjectItemsTable
         return $table
             ->columns([
                 
-                ImageColumn::make('image'),
+                ImageColumn::make('image')
+                    ->disk('public'),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('created_at')

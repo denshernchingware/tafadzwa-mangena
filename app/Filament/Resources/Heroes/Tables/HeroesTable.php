@@ -23,6 +23,9 @@ class HeroesTable
                     ->disk('public'),
                 TextColumn::make('role')
                     ->searchable(),
+                TextColumn::make('description')
+                    ->limit(50)
+                    ->searchable(),
                 // TextColumn::make('cv_file')
                 //     ->searchable(),
                 TextColumn::make('created_at')
