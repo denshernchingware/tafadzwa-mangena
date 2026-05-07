@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Contacts\Pages;
 
 use App\Filament\Resources\Contacts\ContactResource;
+use App\Models\Contact;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
@@ -12,6 +13,12 @@ class ListContacts extends ListRecords
 
     protected function getHeaderActions(): array
     {
+        $contactExists = Contact::count() > 0;
+
+        if ($contactExists) {
+            return [];
+        }
+
         return [
             CreateAction::make()
                 ->modal()
