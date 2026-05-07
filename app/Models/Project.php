@@ -18,4 +18,8 @@ class Project extends Model
     {
         return $this->hasOne(ProjectDetail::class);
     }
+    public function item(): HasOne
+    {
+        return $this->hasOne(ProjectItem::class);
+    }
 }

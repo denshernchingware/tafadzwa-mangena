@@ -175,7 +175,11 @@
                                         <span class="back-category">{{ $project->subtitle }}</span>
                                         <h3 class="back-title">{{ $project->title }}</h3>
                                         <p class="back-desc">{{ $project->description }}</p>
-                                        <a href="{{ route('project') }}" class="view-btn">
+
+                                        <form action="">
+
+                                        </form>
+                                        <a href="{{ route('project' , $project->id) }}" class="view-btn">
                                             View Project
                                             <svg width="13" height="13" fill="none" stroke="currentColor"
                                                 stroke-width="2.2" viewBox="0 0 24 24">
@@ -188,7 +192,7 @@
                                         <div class="m-category">{{ $project->subtitle }}</div>
                                         <div class="m-title">{{ $project->title }}</div>
                                         <p class="m-desc">{{ $project->description }}</p>
-                                        <a href="{{ route('project') }}" class="read-more">Read More <svg width="11"
+                                        <a href="{{ route('project', $project->id) }}" class="read-more">Read More <svg width="11"
                                                 height="11" fill="none" stroke="currentColor" stroke-width="2.5"
                                                 viewBox="0 0 24 24">
                                                 <path d="M5 12h14M13 6l6 6-6 6" />

@@ -24,7 +24,7 @@
                 </div>
                 <div
                     class="position-absolute right-100px bottom-minus-100px w-55 md-w-60 xs-w-100 md-right-150px xs-right-0px">
-                    <img src="images/demo-freelancer-03.png" class="position-absolute top-20 right-minus-50px"
+                    <img src="{{ asset('images/demo-freelancer-03.png') }}" class="position-absolute top-20 right-minus-50px"
                         alt="" data-bottom-top="transform: translateY(-150px)"
                         data-top-bottom="transform: translateY(150px)">
                     <img src="images/demo-freelancer-04.png"
@@ -39,7 +39,7 @@
                                     </div>
                                     <!-- <img data-atropos-offset="5" class="position-relative" src="https://placehold.co/1030x1100" alt=""> -->
                                     <img data-atropos-offset="5" class="position-relative "
-                                        src="images/projects-indiv-hero.png" alt="">
+                                        src="{{ asset('images/projects-indiv-hero.png') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -49,6 +49,7 @@
         </div>
     </section>
     <!-- start section -->
+  {{-- @foreach ($projectDetails as $projectDetail ) --}}
     <section id="awards" class="pb-0">
         <div class="container">
             <div class="row">
@@ -56,11 +57,10 @@
                     <div class="row align-items-center mb-6"
                         data-anime='{ "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                         <div class="col-10">
-                            <span class="text-base-color fw-700 text-uppercase fs-14 ls-05px">Education and Work
-                                Experience</span>
+                            <span class="text-base-color fw-700 text-uppercase fs-14 ls-05px"></span>
                         </div>
                         <div class="col-2 text-end">
-                            <span class="text-base-color fs-14 fw-700">03</span>
+                            <span class="text-base-color fs-14 fw-700"></span>
                         </div>
                         <div class="col-12 mt-5px">
                             <div class="separator-line-2px w-100 d-block bg-base-color"></div>
@@ -75,8 +75,7 @@
                             <!-- Left: heading -->
                             <div class="col-12 col-md-4">
 
-                                <p class="col-md-9 last-paragraph-no-margin">Foundations built through rigorous study in
-                                    design, technology, and human-centred systems.</p>
+                                <p class="col-md-9 last-paragraph-no-margin">{{ $projectDetails->description }}</p>
                             </div>
 
                             <!-- Right: table -->
@@ -85,13 +84,13 @@
                                     <tbody>
 
                                         <tr>
-                                            <td class="col-count">BSc</td>
+                                            <td class="col-count"></td>
                                             <td class="col-divider"></td>
                                             <td class="col-info">
-                                                <p class="entry-title">Computer Science – <strong>MIT</strong></p>
-                                                <p class="entry-sub">Major in Human-Computer Interaction</p>
+                                                <p class="entry-title">{{ $projectDetails->project_link }}</p>
+                                                <p class="entry-sub">{{ $projectDetails->tools }}</p>
                                             </td>
-                                            <td class="col-year">2018</td>
+                                            <td class="col-year"></td>
                                         </tr>
 
 
@@ -111,21 +110,26 @@
                 </div>
             </div>
     </section>
+    {{-- @endforeach --}}
+
     <!-- end section -->
+
     <section>
         <div class=container>
             <div class="row justify-content-center align-items-center mb-6 sm-pb-9">
                 <div class="col-lg-6 col-md-9 position-relative md-mb-15 text-center text-lg-start"
                     data-anime='{ "el": "childs", "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 15, "easing": "easeOutQuad" }'>
-                    <img src="images/mangena-hero-one.png" alt="">
+                    <img src="{{ asset('storage/' . $project->image) }}" alt="">
                 </div>
                 <div class="col-lg-6 ps-6 text-center text-lg-start lg-ps-15px"
                     data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <h3 class="text-dark-gray fw-700 ls-minus-1px">Sign In Page</h3>
-                    <p class="w-80 xl-w-90 lg-w-100 mb-40px sm-mb-25px">this is sing in page</p>
+                    <h3 class="text-dark-gray fw-700 ls-minus-1px">{{ $project->name }}</h3>
+                    <p class="w-80 xl-w-90 lg-w-100 mb-40px sm-mb-25px">t{{ $project->text }}</p>
                 </div>
             </div>
 
         </div>
     </section>
+
+
 @endsection

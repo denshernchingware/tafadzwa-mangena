@@ -8,4 +8,6 @@ Route::get('/', [PortfolioController::class, 'index'])->name('home');
 
 Route::get('/all-projects', [PortfolioController::class, 'allProjects'])->name('all-projects');
 
-Route::get('/project', [PortfolioController::class, 'project'])->name('project');
+
+
+Route::get('/project/{id}', [PortfolioController::class, 'project']) ->name('project');

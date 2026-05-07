@@ -8,6 +8,8 @@ use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Hero;
 use App\Models\Project;
+use App\Models\ProjectDetail;
+use App\Models\ProjectItem;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 
@@ -33,8 +35,15 @@ class PortfolioController extends Controller
         return view('all-projects', compact('projects'));
     }
 
-    public function project()
+    // public function project()
+    // {
+    //     return view('project');
+    // }
+    public function project($id)
     {
-        return view('project');
+        $project = ProjectItem::findOrFail($id);
+        $projectDetails = ProjectDetail::findOrFail($id);
+
+        return view('project', compact('project' , 'projectDetails'));
     }
 }

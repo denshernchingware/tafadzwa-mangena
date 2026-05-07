@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ProjectItem extends Model
 {
     protected $fillable = [
-        'project_detail_id',
+        'project_id',
         'image',
         'name',
         'text',
@@ -17,5 +17,9 @@ class ProjectItem extends Model
     public function detail(): BelongsTo
     {
         return $this->belongsTo(ProjectDetail::class, 'project_detail_id');
+    }
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(Project::class);
     }
 }
