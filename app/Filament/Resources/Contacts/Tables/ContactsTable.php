@@ -19,12 +19,23 @@ class ContactsTable
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),
+                TextColumn::make('phone_one')
+                    ->label('Phone 1')
+                    ->searchable(),
+                TextColumn::make('phone_two')
+                    ->label('Phone 2')
+                    ->searchable(),
+                TextColumn::make('location')
+                    ->label('Location')
+                    ->searchable(),
                 TextColumn::make('github_link')
                     ->searchable(),
                 TextColumn::make('linkedin_link')
                     ->searchable(),
                 TextColumn::make('facebook_link')
                     ->searchable(),
+                TextColumn::make('cv')
+                    ->label('CV'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

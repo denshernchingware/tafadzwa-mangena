@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Contact extends Model
 {
@@ -12,10 +11,9 @@ class Contact extends Model
         'github_link',
         'linkedin_link',
         'facebook_link',
+        'phone_one',
+        'phone_two',
+        'cv',
+        'location',
     ];
-
-    public function phones(): HasMany
-    {
-        return $this->hasMany(ContactPhone::class);
-    }
 }
