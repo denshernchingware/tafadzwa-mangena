@@ -21,8 +21,12 @@ class EducationTable
                 //
             ])
             ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
+                ViewAction::make()
+                    ->modal()
+                    ->modalWidth('lg'),
+                EditAction::make()
+                    ->modal()
+                    ->modalWidth('lg'),
                 DeleteAction::make(),
             ])
             ->toolbarActions([
