@@ -199,9 +199,7 @@
                             </div>
                         @endforeach
 
-                    </div><!-- /row -->
-
-                    <!-- ── All Projects CTA ────────────────────────────────────────────── -->
+                    </div>
                     <div class="text-center mt-5 pt-2">
                         <a href="#" class="all-projects-btn">
                             View all projects
