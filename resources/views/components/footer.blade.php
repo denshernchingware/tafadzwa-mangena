@@ -16,6 +16,16 @@
                             @endforeach
 
                     </div>
+                    @foreach ($contacts as $contact)
+                    <div class="d-flex align-items-center mt-3">
+                        <i class="bi bi-telephone icon-extra-large md-icon-large me-10px text-base-color align-middle"></i>
+                        <a href="tel:{{ $contact->phone_one }}" class="fs-30 sm-fs-25 text-base-color fw-600 align-middle">{{ $contact->phone_one }}</a>
+                        @if($contact->phone_two)
+                        <span class="mx-2">/</span>
+                        <a href="tel:{{ $contact->phone_two }}" class="fs-30 sm-fs-25 text-base-color fw-600 align-middle">{{ $contact->phone_two }}</a>
+                        @endif
+                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="row g-0 align-items-center border-top border-2 border-color-dark-gray pt-30px mt-6 mb-3">

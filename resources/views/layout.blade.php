@@ -23,7 +23,54 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" />
     <link rel="stylesheet" href="{{ asset('demos/freelancer/freelancer.css') }}" />
+<style>
+    /* Download CV button — flicker + white bg */
+.download-cv-btn {
+    background-color: #ffffff !important;
+    color: #111111 !important;
+    border: 2px solid #111111;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    animation: btn-flicker 2.8s ease-in-out infinite;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+}
 
+.download-cv-btn:hover {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    animation: none;
+}
+
+.download-cv-btn:hover span {
+    background-color: #ffffff !important;
+    color: #111111 !important;
+}
+
+/* Flicker — "hey, click me" pulse */
+@keyframes btn-flicker {
+    0%   { box-shadow: 0 0 0px rgba(0,0,0,0); opacity: 1; }
+    20%  { box-shadow: 0 0 8px rgba(0,0,0,0.3); opacity: 0.75; }
+    25%  { box-shadow: 0 0 0px rgba(0,0,0,0); opacity: 1; }
+    45%  { box-shadow: 0 0 10px rgba(0,0,0,0.35); opacity: 0.7; }
+    50%  { box-shadow: 0 0 0px rgba(0,0,0,0); opacity: 1; }
+    100% { box-shadow: 0 0 0px rgba(0,0,0,0); opacity: 1; }
+}
+.contact-svg-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, opacity 0.2s;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+
+
+
+</style>
 </head>
 
 <body data-mobile-nav-style="classic" class="custom-cursor">
@@ -44,11 +91,9 @@
             <div class="d-flex flex-column justify-content-center h-100 ps-18 pb-12 xxl-p-12 sm-p-20px">
                 <div class="hamburger-menu menu-list-wrapper w-80 lg-w-100 lg-no-margin sm-mt-auto sm-mb-auto"
                     data-scroll-options='{ "theme": "light" }'>
-                    <ul class="menu-item-list fw-500 p-0">
+<ul class="menu-item-list fw-500 p-0">
                         <li class="menu-item"><a href="#home" class="inner-link nav-link">Home</a></li>
-                        >
                         <li class="menu-item"><a href="#work" class="inner-link nav-link">All Projects</a></li>
-
                     </ul>
                 </div>
                 <div class="w-90 xxl-w-100 d-none d-lg-inline-block">
