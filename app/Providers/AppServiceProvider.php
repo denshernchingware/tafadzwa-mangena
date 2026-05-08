@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        if (Schema::hasTable('contacts')) {
+        if (! $this->app->runningInConsole() && Schema::hasTable('contacts')) {
             View::share('contacts', Contact::all());
         }
     }
