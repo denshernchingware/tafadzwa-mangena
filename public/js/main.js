@@ -4054,6 +4054,8 @@ const fab = document.getElementById('fab');
         let isWaiting = false;
         let conversationHistory = [];
         let greeted = false;
+        let sessionId = localStorage.getItem('chatbot_session_id') || 'session_' + Date.now();
+        localStorage.setItem('chatbot_session_id', sessionId);
 
         // Toggle chat
         fab.addEventListener('click', () => {
@@ -4152,13 +4154,12 @@ const fab = document.getElementById('fab');
         }
 
         function greet() {
-            addMsg('bot', "👋 Hi there! I'm **Breeze**, your MightyBreeze assistant.\n\nHow can I help you today?");
+            addMsg('bot', "👋 Hi there! I'm **Tafadzwa's AI Assistant**.\n\nI'm a data analyst who turns messy business data into clear, actionable insights. How can I help you today?");
             addQuickReplies([
-                '💧 Borehole Drilling',
-                '☀️ Solar Installation',
-                '🌱 Irrigation Systems',
-                '⛽ Bush Pumps',
-                '📞 Get a Quote',
+                '📊 About Tafadzwa',
+                '💼 Services',
+                '📈 Projects',
+                '📞 Contact',
             ]);
         }
 
@@ -4182,62 +4183,39 @@ const fab = document.getElementById('fab');
             sendBtn.disabled = true;
             showTyping();
 
+            // System prompt is now handled by the controller - removed from frontend
+            // const systemPrompt = `...` - see ChatbotController for the prompt
+
             try {
-                const response = await fetch('https://api.anthropic.com/v1/messages', {
+                const response = await fetch('/api/chat', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'X-Session-ID': sessionId
                     },
                     body: JSON.stringify({
-                        model: 'claude-sonnet-4-20250514',
-                        max_tokens: 1000,
-                        system: `You are Breeze, the friendly and knowledgeable AI assistant for MightyBreeze — a professional borehole drilling, solar installation, irrigation, and bush pump company based in Zimbabwe.
-
-Company info:
-- Services: Borehole Drilling, Solar Installation (home & borehole), Irrigation Systems, Bush Pumps
-- Experience: 14+ years
-- Contact: +263 77 106 0581, +263 71 899 5907, +263 77 246 6985
-- Hours: Mon–Sat 8:00–17:30, Sunday CLOSED
-- Website: mightybreeze.co.zw
-
-Your role:
-- Help visitors understand services and choose the right solution
-- Collect leads (name, location, service needed, phone number) naturally in conversation
-- Answer questions about borehole depth, solar sizing, irrigation setup, maintenance
-- Give rough timeframes and explain what factors affect pricing
-- Be warm, concise, and professional — like a helpful salesperson, not a robot
-- Suggest contacting the team for detailed quotes
-- When a user provides their details, confirm you'll pass them on to the team
-- Keep responses short (2–4 sentences max unless explaining something technical)
-- Use occasional relevant emojis to keep things friendly
-- Never make up specific prices — say pricing depends on site assessment`,
-                        messages: conversationHistory,
+                        message: text,
+                        history: conversationHistory.map(msg => ({ role: msg.role, content: msg.content }))
                     }),
                 });
 
                 const data = await response.json();
                 hideTyping();
 
-                const reply = data.content?.[0]?.text ||
-                    "Sorry, I had a hiccup. Please try again or call us on +263 77 106 0581.";
+                const reply = data.reply || "Sorry, I had a hiccup. Please try again or contact Tafadzwa directly.";
                 conversationHistory.push({
                     role: 'assistant',
                     content: reply
                 });
                 addMsg('bot', reply);
 
-                // Contextual quick replies after first AI response
                 if (conversationHistory.length <= 4) {
-                    addQuickReplies(['📍 Site Visit Request', '💰 Cost Estimate', '⏱️ How long does it take?',
-                        '📞 Call Now'
-                    ]);
+                    addQuickReplies(['📊 View Projects', '📈 Skills', '📞 Get in Touch', '💼 Services']);
                 }
 
             } catch (err) {
                 hideTyping();
-                addMsg('bot',
-                    "Oops, something went wrong on my end. Please call us directly on **+263 77 106 0581** and we'll help you right away! 📞"
-                    );
+                addMsg('bot', "Oops, something went wrong. Please contact Tafadzwa on +1 (555) 123-4567");
             }
 
             isWaiting = false;

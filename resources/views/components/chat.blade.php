@@ -13,7 +13,7 @@
 
         <!-- Chat Window -->
         <div id="chat-window" role="dialog" aria-label="MightyBreeze Assistant">
-            <div class="chat-header">
+            <div class="chat-header " >
                 <div class="chat-avatar">
                     <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -24,9 +24,9 @@
                     </svg>
                 </div>
                 <div class="chat-header-info">
-                    <div class="chat-header-name">Breeze Assistant</div>
+                    <div class="chat-header-name">Tafadzwa Mangena</div>
                     <div class="chat-header-status">
-                        <span class="status-dot"></span> Online · MightyBreeze
+                        <span class="status-dot"></span> Online · Data Analyst
                     </div>
                 </div>
             </div>
@@ -43,6 +43,6 @@
                     </svg>
                 </button>
             </div>
-            <div class="powered-by">Powered by <span>Claude AI</span> · MightyBreeze © 2025</div>
+            <div class="powered-by"> Tafadzwa Mangena © 2026</div>
         </div>
     </section>

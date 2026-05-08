@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="description"
         content="Elevate your online presence with Crafto - a modern, versatile, multipurpose Bootstrap 5 responsive HTML5, SCSS template using highly creative 56+ ready demos.">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- favicon icon -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon-57x57.png') }}">
