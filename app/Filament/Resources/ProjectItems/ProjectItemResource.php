@@ -23,7 +23,7 @@ class ProjectItemResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = null;
 
-    protected static UnitEnum|string|null $navigationGroup = 'Projects';
+    protected static string|UnitEnum|null $navigationGroup = 'Projects';
     protected static ?string $navigationLabel = 'Project Items';
     protected static ?int $navigationSort = 3;
 

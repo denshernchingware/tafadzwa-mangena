@@ -23,7 +23,7 @@ class HeroResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = null;
 
-    protected static UnitEnum|string|null $navigationGroup = 'Personal Profile';
+    protected static string|UnitEnum|null $navigationGroup = 'Personal Profile';
     protected static ?string $navigationLabel = 'Hero';
     protected static ?int $navigationSort = 1;
 

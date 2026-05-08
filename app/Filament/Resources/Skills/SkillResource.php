@@ -23,7 +23,7 @@ class SkillResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = null;
 
-    protected static UnitEnum|string|null $navigationGroup = 'Qualifications';
+    protected static string|UnitEnum|null $navigationGroup = 'Qualifications';
     protected static ?string $navigationLabel = 'Skills';
     protected static ?int $navigationSort = 1;
 

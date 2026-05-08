@@ -23,7 +23,7 @@ class AboutResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = null;
 
-    protected static string|UnitEnum|null $navigationGroup  = 'Personal Profile';
+    protected static string|UnitEnum|null $navigationGroup = 'Personal Profile';
     protected static ?string $navigationLabel = 'About';
     protected static ?int $navigationSort = 2;
 

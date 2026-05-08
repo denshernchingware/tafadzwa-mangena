@@ -23,7 +23,7 @@ class ContactResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = null;
 
-    protected static UnitEnum|string|null $navigationGroup = 'Contact';
+    protected static string|UnitEnum|null $navigationGroup = 'Contact';
     protected static ?string $navigationLabel = 'Contact';
     protected static ?int $navigationSort = 1;
 

@@ -23,7 +23,7 @@ class ExperienceResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = null;
 
-    protected static UnitEnum|string|null $navigationGroup = 'Experience';
+    protected static string|UnitEnum|null $navigationGroup = 'Experience';
     protected static ?string $navigationLabel = 'Experience';
     protected static ?int $navigationSort = 1;
 
