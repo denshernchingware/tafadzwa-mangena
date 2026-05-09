@@ -11,7 +11,7 @@
         }
     </script>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 min-h-screen">
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col lg:flex-row">
     <!-- Mobile Header -->
     <header class="lg:hidden bg-blue-600 text-white p-4 flex justify-between items-center sticky top-0 z-20">
         <button id="mobileMenuBtn" class="p-2 rounded hover:bg-blue-700">
@@ -34,7 +34,7 @@
     <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden"></div>
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 w-64 bg-blue-600 text-white transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40 h-full overflow-y-auto">
+    <aside id="sidebar" class="w-64 bg-blue-600 text-white flex-shrink-0 fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40 h-full overflow-y-auto">
         <div class="p-4 bg-blue-700 lg:bg-blue-600 flex justify-between items-center">
             <h1 class="text-xl font-bold">Admin Panel</h1>
             <button id="closeSidebarBtn" class="lg:hidden p-2 rounded hover:bg-blue-800">
@@ -64,7 +64,7 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1">
+    <div class="flex-1 flex flex-col min-h-0">
         <!-- Desktop Top Bar -->
         <header class="hidden lg:flex bg-white dark:bg-gray-800 shadow p-4 justify-between items-center sticky top-0 z-10">
             <div class="text-xl font-bold text-gray-800 dark:text-white">
@@ -81,15 +81,15 @@
         </header>
 
         <!-- Content -->
-        <div class="p-6">
+        <main class="flex-1 p-6 overflow-auto">
             @if(session('success'))
                 <div class="bg-green-100 dark:bg-green-900 border border-green-400 text-green-700 dark:text-green-300 px-4 py-3 rounded mb-4">
                     {{ session('success') }}
                 </div>
             @endif
             @yield('content')
-        </div>
-    </main>
+        </main>
+    </div>
 
     <script>
         // Sidebar toggle
