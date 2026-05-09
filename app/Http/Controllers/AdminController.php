@@ -214,9 +214,9 @@ class AdminController extends Controller
 
     // ProjectItems
     public function projectItems() { return view('admin.project-items.index', ['projectItems' => ProjectItem::all()]); }
-    public function createProjectItem() { return view('admin.project-items.create'); }
+    public function createProjectItem() { return view('admin.project-items.create', ['projects' => Project::all()]); }
     public function showProjectItem(ProjectItem $projectItem) { return view('admin.project-items.show', compact('projectItem')); }
-    public function editProjectItem(ProjectItem $projectItem) { return view('admin.project-items.edit', compact('projectItem')); }
+    public function editProjectItem(ProjectItem $projectItem) { return view('admin.project-items.edit', ['projectItem' => $projectItem, 'projects' => Project::all()]); }
     public function updateProjectItem(Request $request, ProjectItem $projectItem)
     {
         $data = $request->all();
@@ -244,9 +244,9 @@ class AdminController extends Controller
 
     // ProjectDetails
     public function projectDetails() { return view('admin.project-details.index', ['projectDetails' => ProjectDetail::all()]); }
-    public function createProjectDetail() { return view('admin.project-details.create'); }
+    public function createProjectDetail() { return view('admin.project-details.create', ['projects' => Project::all()]); }
     public function showProjectDetail(ProjectDetail $projectDetail) { return view('admin.project-details.show', compact('projectDetail')); }
-    public function editProjectDetail(ProjectDetail $projectDetail) { return view('admin.project-details.edit', compact('projectDetail')); }
+    public function editProjectDetail(ProjectDetail $projectDetail) { return view('admin.project-details.edit', ['projectDetail' => $projectDetail, 'projects' => Project::all()]); }
     public function updateProjectDetail(Request $request, ProjectDetail $projectDetail)
     {
         $projectDetail->update($request->all());
