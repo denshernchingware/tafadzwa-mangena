@@ -134,8 +134,8 @@ return [
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
-            'url' => trim(env('DB_URL')),
-            'host' => trim(env('DB_HOST', 'localhost')),
+            'url' => env('DB_URL') ? trim(env('DB_URL')) : null,
+            'host' => env('DB_HOST') ? trim(env('DB_HOST', 'localhost')) : 'localhost',
             'port' => env('DB_PORT', '1433'),
             'database' => env('DB_DATABASE', 'laravel'),
             'username' => env('DB_USERNAME', 'root'),
@@ -143,8 +143,6 @@ return [
             'charset' => env('DB_CHARSET', 'utf8'),
             'prefix' => '',
             'prefix_indexes' => true,
-            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
-            // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
     ],
@@ -187,8 +185,8 @@ return [
         ],
 
         'default' => [
-            'url' => trim(env('REDIS_URL')),
-            'host' => trim(env('REDIS_HOST', '127.0.0.1')),
+            'url' => env('REDIS_URL') ? trim(env('REDIS_URL')) : null,
+            'host' => env('REDIS_HOST') ? trim(env('REDIS_HOST', '127.0.0.1')) : '127.0.0.1',
             'username' => env('REDIS_USERNAME'),
             'password' => env('REDIS_PASSWORD'),
             'port' => env('REDIS_PORT', '6379'),
@@ -200,8 +198,8 @@ return [
         ],
 
         'cache' => [
-            'url' => trim(env('REDIS_URL')),
-            'host' => trim(env('REDIS_HOST', '127.0.0.1')),
+            'url' => env('REDIS_URL') ? trim(env('REDIS_URL')) : null,
+            'host' => env('REDIS_HOST') ? trim(env('REDIS_HOST', '127.0.0.1')) : '127.0.0.1',
             'username' => env('REDIS_USERNAME'),
             'password' => env('REDIS_PASSWORD'),
             'port' => env('REDIS_PORT', '6379'),
