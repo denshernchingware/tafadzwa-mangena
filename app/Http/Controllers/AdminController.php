@@ -12,9 +12,18 @@ use App\Models\Contact;
 use App\Models\ProjectItem;
 use App\Models\ProjectDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
+    private function uploadImage($request, $fieldName, $folder)
+    {
+        if ($request->hasFile($fieldName)) {
+            return $request->file($fieldName)->store($folder, 'public');
+        }
+        return null;
+    }
+
     public function dashboard()
     {
         $stats = [
@@ -38,16 +47,25 @@ class AdminController extends Controller
     public function editProject(Project $project) { return view('admin.projects.edit', compact('project')); }
     public function updateProject(Request $request, Project $project)
     {
-        $project->update($request->all());
+        $data = $request->all();
+        if ($image = $this->uploadImage($request, 'image', 'projects')) {
+            $data['image'] = $image;
+        }
+        $project->update(array_filter($data));
         return redirect()->route('admin.projects')->with('success', 'Project updated!');
     }
     public function storeProject(Request $request)
     {
-        Project::create($request->all());
+        $data = $request->all();
+        if ($image = $this->uploadImage($request, 'image', 'projects')) {
+            $data['image'] = $image;
+        }
+        Project::create(array_filter($data));
         return redirect()->route('admin.projects')->with('success', 'Project created!');
     }
     public function destroyProject(Project $project)
     {
+        if ($project->image) Storage::disk('public')->delete($project->image);
         $project->delete();
         return redirect()->route('admin.projects')->with('success', 'Project deleted!');
     }
@@ -59,16 +77,32 @@ class AdminController extends Controller
     public function editHero(Hero $hero) { return view('admin.heroes.edit', compact('hero')); }
     public function updateHero(Request $request, Hero $hero)
     {
-        $hero->update($request->all());
+        $data = $request->all();
+        if ($image = $this->uploadImage($request, 'main_image', 'heroes')) {
+            $data['main_image'] = $image;
+        }
+        if ($image = $this->uploadImage($request, 'additional_image', 'heroes')) {
+            $data['additional_image'] = $image;
+        }
+        $hero->update(array_filter($data));
         return redirect()->route('admin.heroes')->with('success', 'Hero updated!');
     }
     public function storeHero(Request $request)
     {
-        Hero::create($request->all());
+        $data = $request->all();
+        if ($image = $this->uploadImage($request, 'main_image', 'heroes')) {
+            $data['main_image'] = $image;
+        }
+        if ($image = $this->uploadImage($request, 'additional_image', 'heroes')) {
+            $data['additional_image'] = $image;
+        }
+        Hero::create(array_filter($data));
         return redirect()->route('admin.heroes')->with('success', 'Hero created!');
     }
     public function destroyHero(Hero $hero)
     {
+        if ($hero->main_image) Storage::disk('public')->delete($hero->main_image);
+        if ($hero->additional_image) Storage::disk('public')->delete($hero->additional_image);
         $hero->delete();
         return redirect()->route('admin.heroes')->with('success', 'Hero deleted!');
     }
@@ -185,16 +219,25 @@ class AdminController extends Controller
     public function editProjectItem(ProjectItem $projectItem) { return view('admin.project-items.edit', compact('projectItem')); }
     public function updateProjectItem(Request $request, ProjectItem $projectItem)
     {
-        $projectItem->update($request->all());
+        $data = $request->all();
+        if ($image = $this->uploadImage($request, 'image', 'projectItem')) {
+            $data['image'] = $image;
+        }
+        $projectItem->update(array_filter($data));
         return redirect()->route('admin.project-items')->with('success', 'Project item updated!');
     }
     public function storeProjectItem(Request $request)
     {
-        ProjectItem::create($request->all());
+        $data = $request->all();
+        if ($image = $this->uploadImage($request, 'image', 'projectItem')) {
+            $data['image'] = $image;
+        }
+        ProjectItem::create(array_filter($data));
         return redirect()->route('admin.project-items')->with('success', 'Project item created!');
     }
     public function destroyProjectItem(ProjectItem $projectItem)
     {
+        if ($projectItem->image) Storage::disk('public')->delete($projectItem->image);
         $projectItem->delete();
         return redirect()->route('admin.project-items')->with('success', 'Project item deleted!');
     }

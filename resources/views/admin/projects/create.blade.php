@@ -17,12 +17,12 @@
         </div>
     </nav>
     <div class="container mx-auto p-6">
-        <form method="POST" action="{{ route('admin.projects.store') }}" class="bg-white rounded-lg shadow-md p-6">
+        <form method="POST" action="{{ route('admin.projects.store') }}" enctype="multipart/form-data" class="bg-white rounded-lg shadow-md p-6">
             @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div><label class="block text-sm font-medium text-gray-700 mb-1">Title</label><input type="text" name="title" value="" class="w-full border rounded px-3 py-2"></div>
                 <div><label class="block text-sm font-medium text-gray-700 mb-1">Subtitle</label><input type="text" name="subtitle" value="" class="w-full border rounded px-3 py-2"></div>
-                <div><label class="block text-sm font-medium text-gray-700 mb-1">Image</label><input type="text" name="image" value="" class="w-full border rounded px-3 py-2"></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1">Image</label><input type="file" name="image" accept="image/*" class="w-full border rounded px-3 py-2"></div>
                 <div class="md:col-span-2"><label class="block text-sm font-medium text-gray-700 mb-1">Description</label><textarea name="description" class="w-full border rounded px-3 py-2" rows="4"></textarea></div>
             </div>
             <div class="flex gap-4 mt-6">

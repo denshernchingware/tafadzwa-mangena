@@ -18,7 +18,7 @@
     </nav>
     <div class="container mx-auto p-6">
         <div class="bg-white rounded-lg shadow-md p-6">
-            <form action="{{ route('admin.project-items.update', $projectItem->id) }}" method="POST">
+            <form action="{{ route('admin.project-items.update', $projectItem->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -28,8 +28,10 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Image</label>
-                        <input type="text" name="image" value="{{ $projectItem->image }}" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
+                        <input type="file" name="image" accept="image/*" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+@if($projectItem->image)
+    <img src="{{ asset('storage/' . $projectItem->image) }}" class="mt-2 w-32 h-32 object-cover">
+@endif
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Link</label>
                         <input type="text" name="link" value="{{ $projectItem->link }}" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
