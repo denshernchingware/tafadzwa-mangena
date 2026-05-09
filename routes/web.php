@@ -81,7 +81,7 @@ Route::get('/admin/contacts/create', [AdminController::class, 'createContact'])-
 Route::get('/admin/contacts/{contact}', [AdminController::class, 'showContact'])->name('admin.contacts.show')->middleware('admin.auth');
 Route::get('/admin/contacts/{contact}/edit', [AdminController::class, 'editContact'])->name('admin.contacts.edit')->middleware('admin.auth');
 Route::put('/admin/contacts/{contact}', [AdminController::class, 'updateContact'])->name('admin.contacts.update')->middleware('admin.auth');
-Route::post('/admin/contacts', [AdminController::class, 'storeContact'])->name('admin.contacts.store')->middleware('admin.auth');
+Route::post('/admin/contacts/store', [AdminController::class, 'storeContact'])->name('admin.contacts.store')->middleware('admin.auth');
 Route::delete('/admin/contacts/{contact}', [AdminController::class, 'destroyContact'])->name('admin.contacts.destroy')->middleware('admin.auth');
 
 // Project Items
