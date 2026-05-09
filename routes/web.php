@@ -5,13 +5,10 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\SecurityController;
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
 
 Route::get('/all-projects', [PortfolioController::class, 'allProjects'])->name('all-projects');
-
-
 
 Route::get('/project/{id}', [PortfolioController::class, 'project']) ->name('project');
 
@@ -21,10 +18,4 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/admin/mangena', [PortfolioController::class, 'admin'])->name('admin.mangena');
-});
-
-// Route::post('/chat', [ChatbotController::class, 'chat'])->name('chat');
-
-// Route::get('/chat/history', [ChatbotController::class, 'history'])->name('chat.history');
+Route::get('/admin/mangena', [PortfolioController::class, 'admin'])->name('admin.mangena')->middleware('admin.auth');
