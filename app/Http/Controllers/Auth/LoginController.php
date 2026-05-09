@@ -15,25 +15,17 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        try {
-            $credentials = $request->validate([
-                'email' => ['required', 'email'],
-                'password' => ['required'],
-            ]);
+        $email = 'ceo@gmail.com';
+        $password = 'ceo@mgc456';
 
-            if (Auth::attempt($credentials, $request->filled('remember'))) {
-                $request->session()->regenerate();
-                return redirect()->intended(route('admin.mangena'))->with('success', 'Welcome back!');
-            }
-
-            return back()->withErrors([
-                'email' => 'The provided credentials do not match our records.',
-            ])->onlyInput('email');
-        } catch (\Exception $e) {
-            return back()->withErrors([
-                'email' => 'Login failed: ' . $e->getMessage(),
-            ])->onlyInput('email');
+        if ($request->email === $email && $request->password === $password) {
+            $request->session()->regenerate();
+            return redirect()->intended(route('admin.mangena'))->with('success', 'Welcome back!');
         }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
     public function logout(Request $request)
