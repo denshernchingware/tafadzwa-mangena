@@ -76,7 +76,7 @@ Route::post('/admin/experiences', [AdminController::class, 'storeExperience'])->
 Route::delete('/admin/experiences/{experience}', [AdminController::class, 'destroyExperience'])->name('admin.experiences.destroy')->middleware('admin.auth');
 
 // Contacts
-Route::get('/admin/index', [AdminController::class, 'contacts'])->name('admin.contacts')->middleware('admin.auth');
+Route::get('/admin/contacts', [AdminController::class, 'contacts'])->name('admin.contacts')->middleware('admin.auth');
 Route::get('/admin/contacts/create', [AdminController::class, 'createContact'])->name('admin.contacts.create')->middleware('admin.auth');
 Route::get('/admin/contacts/{contact}', [AdminController::class, 'showContact'])->name('admin.contacts.show')->middleware('admin.auth');
 Route::get('/admin/contacts/{contact}/edit', [AdminController::class, 'editContact'])->name('admin.contacts.edit')->middleware('admin.auth');
