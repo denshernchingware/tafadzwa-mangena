@@ -43,9 +43,9 @@
                         <td class="px-4 py-3 text-sm text-gray-600">{{ $edu->institution_name }}</td>
                         <td class="px-4 py-3">
                             <div class="flex gap-2">
-                                <a href="{{ route('admin.education.show', $edu->id) }}" class="text-blue-600 hover:text-blue-800">View</a>
-                                <a href="{{ route('admin.education.edit', $edu->id) }}" class="text-yellow-600 hover:text-yellow-800">Edit</a>
-                                <form method="POST" action="{{ route('admin.education.destroy', $edu->id) }}" class="inline">
+                                <a href="/admin/education/{{ $edu->id }}" class="text-blue-600 hover:text-blue-800">View</a>
+                                <a href="/admin/education/{{ $edu->id }}/edit" class="text-yellow-600 hover:text-yellow-800">Edit</a>
+                                <form method="POST" action="/admin/education/{{ $edu->id }}" class="inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:text-red-800" onclick="return confirm('Are you sure?')">Delete</button>
