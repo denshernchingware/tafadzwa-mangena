@@ -45,4 +45,10 @@ class PortfolioController extends Controller
 
         return view('project', compact('project' , 'projectDetails'));
     }
+
+    public function admin()
+    {
+        $projects = Project::all();
+        return view('admin', compact('projects'));
+    }
 }
