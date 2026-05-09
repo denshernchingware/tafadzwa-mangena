@@ -34,7 +34,7 @@
     <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden"></div>
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="w-64 bg-blue-600 text-white flex-shrink-0 fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40 h-full overflow-y-auto">
+    <aside id="sidebar" class="w-64 bg-blue-600 text-white flex-shrink-0 fixed lg:sticky inset-y-0 left-0 top-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40 h-screen lg:h-auto overflow-y-auto">
         <div class="p-4 bg-blue-700 lg:bg-blue-600 flex justify-between items-center">
             <h1 class="text-xl font-bold">Admin Panel</h1>
             <button id="closeSidebarBtn" class="lg:hidden p-2 rounded hover:bg-blue-800">
@@ -55,7 +55,7 @@
             <a href="/admin/project-items" class="block px-4 py-2 rounded hover:bg-blue-700 {{ request()->is('admin/project-items*') ? 'bg-blue-800' : '' }}">Project Items</a>
             <a href="/admin/project-details" class="block px-4 py-2 rounded hover:bg-blue-700 {{ request()->is('admin/project-details*') ? 'bg-blue-800' : '' }}">Project Details</a>
         </nav>
-        <div class="p-4 border-t border-blue-700">
+        <div class="p-4 border-t border-blue-700 mt-auto">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="w-full bg-red-600 px-4 py-2 rounded hover:bg-red-700">Logout</button>
@@ -64,7 +64,7 @@
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col min-h-0">
+    <div class="flex-1 flex flex-col min-h-0 lg:min-h-screen">
         <!-- Desktop Top Bar -->
         <header class="hidden lg:flex bg-white dark:bg-gray-800 shadow p-4 justify-between items-center sticky top-0 z-10">
             <div class="text-xl font-bold text-gray-800 dark:text-white">
