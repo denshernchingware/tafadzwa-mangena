@@ -39,14 +39,14 @@ return [
 
         'smtp' => [
             'transport' => 'smtp',
-            'scheme' => trim(env('MAIL_SCHEME')),
-            'url' => trim(env('MAIL_URL')),
-            'host' => trim(env('MAIL_HOST', '127.0.0.1')),
+            'scheme' => env('MAIL_SCHEME') ? trim(env('MAIL_SCHEME')) : null,
+            'url' => env('MAIL_URL') ? trim(env('MAIL_URL')) : null,
+            'host' => env('MAIL_HOST') ? trim(env('MAIL_HOST', '127.0.0.1')) : '127.0.0.1',
             'port' => env('MAIL_PORT', 2525),
-            'username' => trim(env('MAIL_USERNAME')),
-            'password' => trim(env('MAIL_PASSWORD')),
+            'username' => env('MAIL_USERNAME') ? trim(env('MAIL_USERNAME')) : null,
+            'password' => env('MAIL_PASSWORD') ? trim(env('MAIL_PASSWORD')) : null,
             'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) trim(env('APP_URL', 'http://localhost')), PHP_URL_HOST)),
+            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) (env('APP_URL') ? trim(env('APP_URL', 'http://localhost')) : 'http://localhost'), PHP_URL_HOST)),
         ],
 
         'ses' => [
