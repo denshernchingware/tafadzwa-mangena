@@ -19,7 +19,7 @@
     <div class="container mx-auto p-6">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-2xl font-bold text-gray-800">All Project Items</h2>
-            <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add New</button>
+            <a href="{{ route('admin.project-items.create') }}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add New</a>
         </div>
         <div class="overflow-x-auto bg-white rounded-lg shadow-md">
             <table class="w-full min-w-[700px]">
@@ -45,7 +45,11 @@
                             <div class="flex gap-2">
                                 <a href="{{ route('admin.project-items.show', $item->id) }}" class="text-blue-600 hover:text-blue-800">View</a>
                                 <a href="{{ route('admin.project-items.edit', $item->id) }}" class="text-yellow-600 hover:text-yellow-800">Edit</a>
-                                <button class="text-red-600 hover:text-red-800">Delete</button>
+                                <form method="POST" action="{{ route('admin.project-items.destroy', $item->id) }}" class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-600 hover:text-red-800" onclick="return confirm('Are you sure?')">Delete</button>
+                                </form>
                             </div>
                         </td>
                     </tr>
